@@ -15,6 +15,7 @@ interval = 1000;
 overScoreText = overScore.textContent;
 function start(){
     let score = 0;
+    interval = 1000;
 let gravity = 0.8;
     x=setInterval(()=>{
     console.log(overScoreText)
