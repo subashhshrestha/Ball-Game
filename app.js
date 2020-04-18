@@ -1,10 +1,17 @@
+let storage =window.localStorage.getItem('score');
+if(!storage){
+    window.localStorage.setItem('score', 0);
+}
+let highScore = JSON.parse(storage);
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let gameContainer = document.querySelector('.game-container')
 gameOver = document.querySelector('.game-over')
 overScore = document.querySelector('#over-score');
 mainScore = document.querySelector('#score');
+highScoreShow = document.querySelector('#high-score');
 restart = document.getElementById('restart');
+newHighScore = document.querySelector('.new-high-score')
 restart.addEventListener('click',function(){
     gameOver.style.display = 'none';
     document.body.appendChild(gameContainer)
@@ -14,6 +21,11 @@ restart.addEventListener('click',function(){
 interval = 1000;
 overScoreText = overScore.textContent;
 function start(){
+    newHighScore.style.display = "none"
+    highScore =JSON.parse(window.localStorage.getItem('score'))
+    highScoreShow.innerHTML = highScore
+    tempHighScore = highScore;
+    console.log(highScore)
     let score = 0;
     interval = 1000;
 let gravity = 0.8;
@@ -29,6 +41,11 @@ let gravity = 0.8;
         score++;
         mainScore.innerHTML = score
         div.remove();
+    }
+
+    if(score > highScore){
+        highScoreShow.innerHTML = score;
+        window.localStorage.setItem('score', score);
     }
     if(score===10){
         gravity = gravity + 0.3;
@@ -55,6 +72,9 @@ let gravity = 0.8;
             gameContainer.remove();
             gameOver.style.display = 'flex';
             overScore.innerHTML = overScoreText + ' ' + score;
+            if(tempHighScore<score){
+                newHighScore.style.display = "block"
+            }
             clearInterval(x)
         }
     })
