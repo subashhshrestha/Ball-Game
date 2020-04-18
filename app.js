@@ -11,6 +11,7 @@ restart.addEventListener('click',function(){
     gameContainer.innerHTML = '';
     start();
 })
+interval = 1000;
 overScoreText = overScore.textContent;
 function start(){
     let score = 0;
@@ -28,6 +29,25 @@ let gravity = 0.8;
         mainScore.innerHTML = score
         div.remove();
     }
+    if(score===10){
+        gravity = gravity + 1;
+        interval -=100;
+    }else if(score===20){
+        gravity = gravity + 1;
+        interval -=100;
+    }
+    else if(score===30){
+        gravity = gravity + 2;
+        interval -=100;
+    }
+    else if(score===40){
+        gravity = gravity + 2;
+        interval -=100;
+    }
+    else if(score===50){
+        gravity = gravity + 2;
+        interval -=100;
+    }
     setInterval(()=>{
         div.style.top = div.offsetTop + gravity + 'px';
         if(div.offsetTop + 50 > windowHeight){
@@ -38,7 +58,7 @@ let gravity = 0.8;
         }
     })
 
-},1000)
+},interval)
 }
 
 start();
