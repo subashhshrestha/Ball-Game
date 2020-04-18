@@ -31,22 +31,22 @@ let gravity = 0.8;
         div.remove();
     }
     if(score===10){
-        gravity = gravity + 1;
+        gravity = gravity + 0.3;
         interval -=100;
     }else if(score===20){
-        gravity = gravity + 1;
+        gravity = gravity + 0.3;
         interval -=100;
     }
     else if(score===30){
-        gravity = gravity + 2;
+        gravity = gravity + 0.4;
         interval -=100;
     }
     else if(score===40){
-        gravity = gravity + 2;
+        gravity = gravity + 0.5;
         interval -=100;
     }
     else if(score===50){
-        gravity = gravity + 2;
+        gravity = gravity + 1;
         interval -=100;
     }
     setInterval(()=>{
